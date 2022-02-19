@@ -25,14 +25,14 @@ export default {
       options: regionData,
       cascaderProps: {
         expandTrigger: 'hover',
-         checkStrictly: true 
+        checkStrictly: true
       },
       bgi: bgi
     }
   },
   methods: {
-    handleChange (value) {
-      this.$router.push({ name: 'About', params: { value: value }})
+    handleChange(value) {
+      this.$router.push({ name: 'About', params: { value: value } })
     }
   }
 }
@@ -51,7 +51,7 @@ export default {
   //   left: 0;
   // }
   h1{
-    font-size: 40px;
+    font-size: 4vw;
     color: #fff;
     text-shadow: 5px 5px 10px #000;
     margin-top: 30px;
@@ -68,4 +68,3 @@ export default {
   justify-content: center;
 }
 </style>
-

@@ -95,7 +95,7 @@ export default {
       selectedOptions: [],
       cascaderProps: {
         expandTrigger: 'hover',
-         checkStrictly: true 
+        checkStrictly: true
       },
       bgi: require('@/assets/bg.jpg')
     }
@@ -106,27 +106,27 @@ export default {
     }
   },
   methods: {
-    handleChange (value) {
+    handleChange(value) {
       this.selectedOptions = value
       this.getdata()
       // this.bgChange()
     },
     async getdata() {
-      if ( !this.selectedOptions){
-         return this.$notify.error('请选择城市')
+      if (!this.selectedOptions) {
+        return this.$notify.error('请选择城市')
       }
       const res1 = await this.$getLivesWeatherData(this.selectedOptions[this.addId])
       const res2 = await this.$getForecastData(this.selectedOptions[this.addId])
       // console.log(res1)
       // console.log(res2);
-      if(res1.status !== '1' && res2.status !== '1' ) {
+      if (res1.status !== '1' && res2.status !== '1') {
         return this.$notify.error('获取天气数据失败')
       }
       // console.log(res1.lives )
-      if ( res1.lives[0].length < 3 ) return this.$notify.error('此地区暂无数据，可换相近地区查询')
+      if (res1.lives[0].length < 3) return this.$notify.error('此地区暂无数据，可换相近地区查询')
       this.$notify.success('查询天气成功')
       this.livesWeatherData = res1.lives
-      this.livesWeatherData = {...this.livesWeatherData[0]}
+      this.livesWeatherData = { ...this.livesWeatherData[0] }
       // console.log(res1);
       // console.log(this.livesWeatherData)
       this.forecastData = res2.forecasts[0].casts
@@ -136,7 +136,10 @@ export default {
     // 背景图片切换
     bgChange() {
       const weather = this.livesWeatherData.weather
-      if ( !weather ) return this.bgi = require('@/assets/bg.jpg')
+      if (!weather) {
+        this.bgi = require('@/assets/bg.jpg')
+        return
+      }
       this.bgi = require(`@/assets/${weather}.jpg`)
     }
   }
@@ -179,7 +182,7 @@ export default {
   .weather{
     color: #fff;
     text-shadow: 5px 5px 5px #ddd;
-    font-size: 100px;
+    font-size: 7vw;
     font-weight: 700;
     font-style: italic;
   }
@@ -192,7 +195,7 @@ export default {
   .cast{
     color: #fff;
     letter-spacing: 2px;
-    font-size: 20px;
+    font-size: 1.5vw;
     font-weight: 700;
   }
   .el-table{
@@ -202,10 +205,9 @@ export default {
   }
   .windDir{
     color: #000c1f;
-    font-size: 22px;
+    font-size: 1.5vw;
     font-weight: 700;
     text-shadow: 3px 3px 5px #ddd;
   }
 }
 </style>
-
